@@ -1,14 +1,15 @@
 import React from 'react';
 import Stars from '../../../Shared/Stars';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
+import { Link } from 'react-router-dom';
 
 const SingleProductCard = ({ singleProduct }) => {
 
-  const { product_name, img, description, price, rating } = singleProduct
+  const { product_name, img, description, price, rating,product_id } = singleProduct
 
   return (
     <PhotoProvider>
-    <div className="max-w-md rounded-md shadow-xl bg-[#F9F9F9 ]">
+    <div className="max-w-md rounded-md shadow-xl bg-[#F9F9F9]">
       <PhotoView src={img}>
       <img src={img} alt="" className="object-cover object-center w-full rounded-t-md h-72 dark:bg-gray-500" />
       </PhotoView>
@@ -25,7 +26,9 @@ const SingleProductCard = ({ singleProduct }) => {
           </div>
 
         </div>
+        <Link to={`/singleProduct/${product_id}`}>
         <button type="button" className="flex items-center justify-center w-full border px-5 py-2 text-xl font-medium rounded-xl bg-[#579BB1] text-[#E1D7C6] hover:bg-[#E1D7C6] hover:text-[#579BB1] hover:border-[#579BB1] hover:font-semibold ease-in transition'">Read more</button>
+        </Link>
       </div>
     </div>
     </PhotoProvider>
