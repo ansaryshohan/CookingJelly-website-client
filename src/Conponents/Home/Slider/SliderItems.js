@@ -24,8 +24,9 @@ const SliderItems = ({ slider }) => {
           <h1 className='text-4xl font-bold text-white w-2/5'>{title}</h1>
           <p className='text-xl font-semibold text-white w-3/5'>{paragraph}</p>
           <div className='mt-20 flex gap-5'>
-            <button className="btn btn-success w-40 font-bold text-white hover:text-black">Get started </button>
-            <button className="btn btn-outline btn-success w-40 font-bold"> See the Items</button>
+            <button className="btn btn-success w-40 font-bold bg-[#579] text-[#E1D7C6] hover:bg-[#E1D7C6] hover:text-[#579BB1] border-[#579] hover:border-[#579]">Get started </button>
+            
+            <button className="btn btn-outline w-40 font-bold text-[#579BB1] border-[#579] hover:bg-[#579]"> See Our Products</button>
           </div>
         </div>
       </div>

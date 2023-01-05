@@ -33,8 +33,8 @@ const ProductSection = () => {
       </div>
 
       <div className="flex items-center justify-center w-full mt-16">
-        <Link to='/'>
-        <button type="button" className="border px-10 py-4 text-2xl font-medium rounded-xl bg-[#579BB1] text-[#E1D7C6] hover:bg-[#E1D7C6] hover:text-[#579BB1] hover:border-[#579BB1] hover:font-semibold ease-in transition'">Read more</button>
+        <Link to='/products'>
+        <button type="button" className="border px-10 py-4 text-2xl font-medium rounded-xl bg-[#579BB1] text-[#E1D7C6] hover:bg-[#E1D7C6] hover:text-[#579BB1] hover:border-[#579BB1] hover:font-semibold ease-in transition">See all Products</button>
         </Link>
       </div>
     </div>

@@ -5,7 +5,7 @@ import './Subscription.css'
 const Subscription = () => {
   return (
     <div className=''>
-        this is the subscription section
+
         <div className='img-subscription' >
           {/* <img src="https://i.ibb.co/1svJFh7/subscription-Image.jpg" alt="" /> */}
           <div className=' w-1/2 mt-5 pt-20 z-20'>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import logo from './moms-tiffinn-pan-cooking-logo-hd-png-download-removebg-preview.png'
 
 const Header = () => {
@@ -20,14 +21,14 @@ const Header = () => {
           </a>
           <ul className="flex items-center hidden space-x-8 lg:flex lg:grow lg:justify-center gap-8 text-2xl">
             <li>
-              <a
-                href="/"
+              <NavLink
+                to="/products"
                 aria-label="Our product"
                 title="Our product"
                 className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
               >
                 Product
-              </a>
+              </NavLink>
             </li>
             <li>
               <a
