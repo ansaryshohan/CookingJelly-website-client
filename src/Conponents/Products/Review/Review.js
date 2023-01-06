@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react';
-import { AuthContext } from '../../Context/AuthProvider';
-import StarsRating from '../../Shared/StarsRating';
+import { AuthContext } from '../../../Context/AuthProvider';
+import StarsRating from '../../../Shared/StarsRating';
 
-const Review = ({ handleReview, productId }) => {
+const Review = ({ handleReview, productId,product_name }) => {
 
   const { user } = useContext(AuthContext)
   const [starRating, setStarRating] = useState(0)
@@ -13,11 +13,12 @@ const Review = ({ handleReview, productId }) => {
     'image': user.photoURL,
     'reviewText': review,
     'email': user.email,
-    'name': user.displayName,
+    'userName': user.displayName,
     'productId': productId,
+    "productName":product_name,
   }
 
-  const handleOnSubmit=(event)=>{
+  const handleOnSubmit = (event) => {
     event.preventDefault()
     const form = event.target;
     form.reset()

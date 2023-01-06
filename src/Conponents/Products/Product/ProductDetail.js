@@ -1,14 +1,15 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
-import { useLoaderData } from 'react-router-dom';
-import { AuthContext } from '../../Context/AuthProvider';
-import Stars from '../../Shared/Stars';
+import { Link, useLoaderData } from 'react-router-dom';
+import { AuthContext } from '../../../Context/AuthProvider';
+import Stars from '../../../Shared/Stars';
 import CookingMethod from './CookingMethod';
-import Review from './Review';
+import Review from '../Review/Review';
+import SingleProductAllreview from '../Review/SingleProductAllreview';
 
 const ProductDetail = () => {
   const { user } = useContext(AuthContext)
-  const [reviewsFromDB, setReviewsFromDB] = useState({})
+  const [reviewsFromDB, setReviewsFromDB] = useState([])
   const { data } = useLoaderData();
   const { product_name, img, description, price, rating, ingredient, method, _id } = data;
 
@@ -35,7 +36,7 @@ const ProductDetail = () => {
   useEffect(() => {
     fetch(`http://localhost:5000/review/${_id}`)
       .then(res => res.json())
-      .then(data => { setReviewsFromDB(data) })
+      .then(data => { setReviewsFromDB(data.data) })
   }, [_id])
 
   console.log(reviewsFromDB)
@@ -87,10 +88,34 @@ const ProductDetail = () => {
             </div>
           </div>
 
-          {/* review adding section is here */}
-          <div className='w-full'>
-            <Review handleReview={handleReview} productId={_id}></Review>
+          <div className='flex flex-col gap-10 items-center'>
+            {/* review showing section */}
+            {
+              reviewsFromDB.length ? 
+              reviewsFromDB?.map(review => <SingleProductAllreview
+                key={review._id}
+                review={review}></SingleProductAllreview>)
+                :
+                <h1>NO review for this product</h1>
+            }
+
+
+            {/* review adding section is here */}
+            {
+              user ?
+                <div className='w-full'>
+                  <Review
+                    handleReview={handleReview}
+                    productId={_id}
+                    product_name={product_name}></Review>
+                </div>
+                 :
+                <div>
+                  <p>to add Your review Please <Link to="/login" className="link link-info">Login</Link> </p>
+                </div>
+            }
           </div>
+
 
         </div>
       </section>

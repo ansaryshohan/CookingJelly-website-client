@@ -3,16 +3,16 @@ import { useLoaderData } from 'react-router-dom';
 import CategoryProductCard from './CategoryProductCard';
 
 const AllProducts = () => {
-  const{data} =useLoaderData()
+  const { data } = useLoaderData()
 
   return (
     <div className='bg-[#E1D7C6]'>
-        {
-          data?.map(categoryProducts=> <CategoryProductCard
+      {
+        data?.map(categoryProducts => <CategoryProductCard
           key={categoryProducts._id}
           categoryProducts={categoryProducts}
-          ></CategoryProductCard>)
-        }
+        ></CategoryProductCard>)
+      }
     </div>
   );
 };
