@@ -1,5 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
+import AddRecipe from "../Conponents/AddARecipe/AddRecipe";
 import Home from "../Conponents/Home/Home/Home";
+import MyReview from "../Conponents/MyReview/MyReview";
 import AllProducts from "../Conponents/Products/AllProducts";
 import ProductDetail from "../Conponents/Products/ProductDetail";
 import ErrorPage from "../ErrorPage/ErrorPage";
@@ -38,7 +40,15 @@ const router = createBrowserRouter([
         path:'/singleProduct/:id',
         element:<ProductDetail></ProductDetail>,
         loader:({params})=> fetch(`http://localhost:5000/singleProduct/${params.id}`)
-      }
+      },
+      {
+        path:'/addrecipe',
+        element:<AddRecipe></AddRecipe>
+      },
+      {
+        path:'/review',
+        element:<MyReview></MyReview>
+      },
     ]
   }
 ])
