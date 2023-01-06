@@ -144,7 +144,7 @@ const Registration = () => {
                 <form onSubmit={handleOnSubmit}>
                   <div className="mb-1 sm:mb-2">
                     <label
-                      htmlFor="firstName"
+                      htmlFor="name"
                       className="inline-block mb-1 font-medium"
                     >
                       Your Full Name
@@ -157,9 +157,9 @@ const Registration = () => {
                       onChange={handleName}
                     />
                   </div>
-                  <>
+                  <div>
                     <label
-                      htmlFor="firstName"
+                    htmlFor='photoUrl'
                       className="inline-block mb-1 font-medium"
                     >
                       PhotoURL
@@ -171,7 +171,7 @@ const Registration = () => {
                       className="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-blue-300 focus:outline-none focus:shadow-outline"
                       name='photUrl'
                     />
-                  </>
+                  </div>
                   <div className="mb-1 sm:mb-2">
                     <label
                       htmlFor="lastName"
