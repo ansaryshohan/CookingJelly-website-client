@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import AddRecipe from "../Conponents/AddARecipe/AddRecipe";
 import Home from "../Conponents/Home/Home/Home";
 import MyReview from "../Conponents/MyReview/MyReview";
+import ReviewUpdate from "../Conponents/MyReview/ReviewUpdate";
 import AllProducts from "../Conponents/Products/Product/AllProducts";
 import ProductDetail from "../Conponents/Products/Product/ProductDetail";
 import ErrorPage from "../ErrorPage/ErrorPage";
@@ -48,7 +49,16 @@ const router = createBrowserRouter([
       },
       {
         path: '/review',
-        element: <PrivaterRouter><MyReview></MyReview></PrivaterRouter>
+        element: <PrivaterRouter><MyReview></MyReview></PrivaterRouter>,
+      },
+      {
+        path: '/aboutus',
+        element:<></> ,
+      },
+      {
+        path: '/reviewUpdate/:id',
+        element:<ReviewUpdate></ReviewUpdate> ,
+        loader:({params})=>fetch(`https://cooking-jelly-server.vercel.app/reviewUpdate/${params.id}`)
       },
     ]
   }

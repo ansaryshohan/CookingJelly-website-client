@@ -1,11 +1,12 @@
 import React, { useContext, useState } from 'react';
 import { toast } from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthProvider';
+import HeadTitle from '../Shared/HeadTitle';
 
 const Registration = () => {
   const { createUser, updateProfileInfo } = useContext(AuthContext)
-  const navigate=useNavigate()
+  const navigate = useNavigate()
 
   const [userInfo, setUserInfo] = useState({
     fullName: "",
@@ -75,7 +76,7 @@ const Registration = () => {
     createUser(userInfo.email, userInfo.password)
       .then((result) => {
         const user = result.user;
-        console.log( 'from create user',user);
+        console.log('from create user', user);
 
         if (user.uid) {
           // updateing profile name and photourl
@@ -97,6 +98,8 @@ const Registration = () => {
 
   return (
     <div className="relative">
+      {/* head title component */}
+      <HeadTitle to="Register"/>
       <img
         src="https://i.ibb.co/nwcZGmQ/slider1.jpg"
         className="absolute inset-0 object-cover w-full h-full"
@@ -136,6 +139,8 @@ const Registration = () => {
                 </svg>
               </a>
             </div>
+
+            {/* registration form starts from here */}
             <div className="w-full max-w-xl xl:px-8 xl:w-5/12">
               <div className="bg-white rounded shadow-2xl p-7 sm:p-10">
                 <h3 className="mb-4 text-3xl font-bold text-[#579BB1] sm:text-center sm:mb-6 sm:text-2xl">
@@ -159,7 +164,7 @@ const Registration = () => {
                   </div>
                   <div>
                     <label
-                    htmlFor='photoUrl'
+                      htmlFor='photoUrl'
                       className="inline-block mb-1 font-medium"
                     >
                       PhotoURL
@@ -187,7 +192,7 @@ const Registration = () => {
                       name="email"
                       onChange={handleEmail}
                     />
-                   {error.emailError? <p className='text-red-600'>{error.emailError}</p>:<></>}
+                    {error.emailError ? <p className='text-red-600'>{error.emailError}</p> : <></>}
                   </div>
                   <div className="mb-1 sm:mb-2">
                     <label
@@ -204,7 +209,7 @@ const Registration = () => {
                       name="password"
                       onChange={handlePassword}
                     />
-                    {error.passwordError ?  <p className='text-red-600'>{error.passwordError}</p>:<></>}
+                    {error.passwordError ? <p className='text-red-600'>{error.passwordError}</p> : <></>}
                   </div>
                   <div className="flex items-center justify-center w-full mt-5">
                     <button
@@ -216,6 +221,13 @@ const Registration = () => {
                   </div>
                 </form>
               </div>
+              <p className="text-base text-center sm:px-6 dark:text-gray-400">Already have an account?
+                <Link
+                  to='/register'
+                  className="link link-hover text-[#579BB1] font-semibold">
+                  Login
+                </Link>
+              </p>
             </div>
           </div>
         </div>

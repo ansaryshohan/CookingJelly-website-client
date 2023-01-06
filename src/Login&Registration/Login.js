@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthProvider';
+import HeadTitle from '../Shared/HeadTitle';
 
 const Login = () => {
   const [givenEmail, setGivenEmail] = useState('')
@@ -51,6 +52,9 @@ const Login = () => {
 
   return (
     <div className='flex justify-center pt-20'>
+      {/* title tag component */}
+      <HeadTitle to="Login"/>
+      
       <div className="w-full max-w-md p-8 space-y-3 rounded-xl bg-[#CCF2F4] text-black ">
         <h1 className="text-3xl font-bold text-center">Login</h1>
 

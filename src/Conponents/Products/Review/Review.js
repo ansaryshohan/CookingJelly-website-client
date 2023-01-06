@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../../Context/AuthProvider';
 import StarsRating from '../../../Shared/StarsRating';
 
-const Review = ({ handleReview, productId,product_name }) => {
+const Review = ({ handleReview, productId, product_name,productImg }) => {
 
   const { user } = useContext(AuthContext)
   const [starRating, setStarRating] = useState(0)
@@ -15,7 +15,8 @@ const Review = ({ handleReview, productId,product_name }) => {
     'email': user.email,
     'userName': user.displayName,
     'productId': productId,
-    "productName":product_name,
+    "productName": product_name,
+    "productImg":productImg,
   }
 
   const handleOnSubmit = (event) => {
@@ -38,15 +39,18 @@ const Review = ({ handleReview, productId,product_name }) => {
           </div>
         </div>
 
-        {/* star taking value is here */}
-        <form className='py-3' onSubmit={handleOnSubmit}>
-          <StarsRating setStarRating={setStarRating}></StarsRating>
+        {/* review taking form is here */}
+        <form className='py-3' onSubmit={handleOnSubmit} >
+          {/* star taking value is here */}
+          <div className='flex justify-center'>
+            <StarsRating setStarRating={setStarRating}></StarsRating>
+          </div>
           {/* review message area */}
           <div className="flex flex-col w-full my-4">
             <textarea
               rows="3"
               placeholder="Message..."
-              className="p-4 rounded-md resize-none textarea-info textarea w-3/4"
+              className="p-4 rounded-md resize-none textarea-info textarea w-3/4 mx-auto"
               onChange={(event) => setReview(event.target.value)} >
             </textarea>
           </div>

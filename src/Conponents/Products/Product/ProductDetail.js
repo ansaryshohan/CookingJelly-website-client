@@ -10,6 +10,7 @@ import SingleProductAllreview from '../Review/SingleProductAllreview';
 const ProductDetail = () => {
   const { user } = useContext(AuthContext)
   const [reviewsFromDB, setReviewsFromDB] = useState([])
+  const [instantReview,setInstantReview]=useState({})
   const { data } = useLoaderData();
   const { product_name, img, description, price, rating, ingredient, method, _id } = data;
 
@@ -31,6 +32,7 @@ const ProductDetail = () => {
       })
       .catch(err => { console.log(err) })
 
+      setInstantReview(reviewData)
   }
 
   useEffect(() => {
@@ -92,10 +94,17 @@ const ProductDetail = () => {
             {/* review showing section */}
             {
               reviewsFromDB.length ?
-                reviewsFromDB?.map(review => <SingleProductAllreview
-                  key={review._id}
-                  review={review}></SingleProductAllreview>)
+                reviewsFromDB?.map(review => 
+                  <div  key={review._id}>
+                  <SingleProductAllreview
+                  review={review}>
+                  </SingleProductAllreview>
+
+                  <SingleProductAllreview review={instantReview}/>
+                  </div>)
                 :
+                Object.keys(instantReview).length?
+                <SingleProductAllreview review={instantReview}/>:
                 <h1 className='text-2xl font-semibold'>No review for this product</h1>
             }
 
@@ -107,7 +116,8 @@ const ProductDetail = () => {
                   <Review
                     handleReview={handleReview}
                     productId={_id}
-                    product_name={product_name}></Review>
+                    product_name={product_name}
+                    productImg={img}></Review>
                 </div>
                 :
                 <div>

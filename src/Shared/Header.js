@@ -100,7 +100,7 @@ const handleLogOut=()=>{
               aria-label="Sign up"
               title="Sign up"
             >
-              Sign up
+              Login
             </NavLink>
              }
             </li>
