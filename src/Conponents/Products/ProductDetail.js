@@ -21,24 +21,28 @@ const ProductDetail = () => {
               <span className="text-xs uppercase dark:text-gray-400">{product_name}</span>
               <h3 className="text-3xl font-bold">{product_name}</h3>
               <p className="my-6 dark:text-gray-400">{description}</p>
-              <p><Stars stars={rating} /></p>
+              <Stars stars={rating} />
               <p className='text-lg text-orange-500 font-semibold mt-4'>price: ${price}</p>
             </div>
           </div>
-          <div className='container mx-auto space-y-12 grid grid-cols-1 md:grid-cols-2'>
+
+          {/* product making method is done here */}
+          <div className='container mx-auto space-y-12 grid grid-cols-1 md:grid-cols-2 pt-10 mt-5'>
 
             <div className='text-center'>
-              <h1 className='mb-10 text-2xl text'>Ingredient</h1>
+              <h1 className='mb-10 text-2xl text-[#579BB1] font-bold'>Ingredient</h1>
               {
-                ingredient?.map((item,_idx)=>{ return <div key={_idx}nn>
-                <h1>{item}</h1>
-                <div className="divider mx-auto w-4/6"></div> 
-                </div>})
+                ingredient?.map((item, _idx) => {
+                  return <div key={_idx} nn>
+                    <h1>{item}</h1>
+                    <div className="divider mx-auto w-4/6"></div>
+                  </div>
+                })
               }
             </div>
 
             <div className='mb-8'>
-              <h1 className='text-center mb-8'>Method</h1>
+              <h1 className='text-center mb-10 text-2xl text-[#579BB1] font-bold'>Method</h1>
               {
                 method?.map((steps, idx) => <CookingMethod
                   key={idx}
