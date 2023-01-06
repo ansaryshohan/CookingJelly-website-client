@@ -14,7 +14,7 @@ const Header = () => {
             title="Company"
             className=" sm:inline-flex items-center  mr-4 flex-none w-1/4"
           >
-           <img src={logo} alt=""  className='bg-[#579BB1] w-1/6 '/>
+            <img src={logo} alt="" className='bg-[#579BB1] w-1/6 ' />
             <span className="ml-2 text-2xl font-bold tracking-wide text-gray-100 uppercase">
               Cooking<span className='text-orange-600'>Jelly</span>
             </span>
@@ -63,14 +63,14 @@ const Header = () => {
           </ul>
           <ul className="flex items-center hidden space-x-8 lg:flex none">
             <li>
-              <a
-                href="/"
+              <NavLink
+                to="/login"
                 className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
                 aria-label="Sign up"
                 title="Sign up"
               >
                 Sign up
-              </a>
+              </NavLink>
             </li>
           </ul>
           <div className="lg:hidden">
@@ -185,14 +185,14 @@ const Header = () => {
                         </a>
                       </li>
                       <li>
-                        <a
-                          href="/"
+                        <NavLink
+                          to="/login"
                           className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
                           aria-label="Sign up"
                           title="Sign up"
                         >
                           Sign up
-                        </a>
+                        </NavLink>
                       </li>
                     </ul>
                   </nav>
