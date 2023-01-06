@@ -8,6 +8,7 @@ import ErrorPage from "../ErrorPage/ErrorPage";
 import Main from "../Layouts/Main";
 import Login from "../Login&Registration/Login";
 import Registration from "../Login&Registration/Registration";
+import PrivaterRouter from "./PrivaterRouter";
 
 const router = createBrowserRouter([
   {
@@ -43,11 +44,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/addrecipe',
-        element: <AddRecipe></AddRecipe>
+        element: <PrivaterRouter><AddRecipe></AddRecipe></PrivaterRouter>
       },
       {
         path: '/review',
-        element: <MyReview></MyReview>
+        element: <PrivaterRouter><MyReview></MyReview></PrivaterRouter>
       },
     ]
   }

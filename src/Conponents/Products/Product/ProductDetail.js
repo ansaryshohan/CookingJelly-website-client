@@ -16,7 +16,7 @@ const ProductDetail = () => {
 
   const handleReview = (reviewData) => {
 
-    fetch('http://localhost:5000/review', {
+    fetch('https://cooking-jelly-server.vercel.app/review', {
       method: 'POST',
       headers: {
         "content-type": "application/json"
@@ -34,7 +34,7 @@ const ProductDetail = () => {
   }
 
   useEffect(() => {
-    fetch(`http://localhost:5000/review/${_id}`)
+    fetch(`https://cooking-jelly-server.vercel.app/review/${_id}`)
       .then(res => res.json())
       .then(data => { setReviewsFromDB(data.data) })
   }, [_id])
@@ -91,12 +91,12 @@ const ProductDetail = () => {
           <div className='flex flex-col gap-10 items-center'>
             {/* review showing section */}
             {
-              reviewsFromDB.length ? 
-              reviewsFromDB?.map(review => <SingleProductAllreview
-                key={review._id}
-                review={review}></SingleProductAllreview>)
+              reviewsFromDB.length ?
+                reviewsFromDB?.map(review => <SingleProductAllreview
+                  key={review._id}
+                  review={review}></SingleProductAllreview>)
                 :
-                <h1>NO review for this product</h1>
+                <h1 className='text-2xl font-semibold'>No review for this product</h1>
             }
 
 
@@ -109,9 +109,9 @@ const ProductDetail = () => {
                     productId={_id}
                     product_name={product_name}></Review>
                 </div>
-                 :
+                :
                 <div>
-                  <p>to add Your review Please <Link to="/login" className="link link-info">Login</Link> </p>
+                  <p className='text-xl font-bold'>to add Your review Please <Link to="/login" className="link link-info">Login</Link> </p>
                 </div>
             }
           </div>
