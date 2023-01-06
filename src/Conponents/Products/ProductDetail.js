@@ -1,29 +1,44 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { toast } from 'react-hot-toast';
 import { useLoaderData } from 'react-router-dom';
+import { AuthContext } from '../../Context/AuthProvider';
 import Stars from '../../Shared/Stars';
 import CookingMethod from './CookingMethod';
 import Review from './Review';
 
 const ProductDetail = () => {
+  const { user } = useContext(AuthContext)
+  const [reviewsFromDB, setReviewsFromDB] = useState({})
   const { data } = useLoaderData();
-  const { product_name, img, description, price, rating, ingredient, method} = data;
+  const { product_name, img, description, price, rating, ingredient, method, _id } = data;
 
-  const handleReview= (reviewData)=>{
 
-    fetch('http://localhost:5000/review',{
-      method:'POST',
-      headers:{
-        "content-type":"application/json"
+  const handleReview = (reviewData) => {
+
+    fetch('http://localhost:5000/review', {
+      method: 'POST',
+      headers: {
+        "content-type": "application/json"
       },
-      body:JSON.stringify(reviewData)
+      body: JSON.stringify(reviewData)
     })
-    .then(res=>res.json())
-    .then(data=>console.log(data))
-    .catch(err=>{console.log(err)})
+      .then(res => res.json())
+      .then(data => {
+        if (data.acknowledged) {
+          toast.success('review added successfully')
+        }
+      })
+      .catch(err => { console.log(err) })
 
   }
 
+  useEffect(() => {
+    fetch(`http://localhost:5000/review/${_id}`)
+      .then(res => res.json())
+      .then(data => { setReviewsFromDB(data) })
+  }, [_id])
 
+  console.log(reviewsFromDB)
   return (
     <div className='mt-10'>
       <div className='text-2xl font-semibold text-orange-300 mb-5'>
@@ -31,6 +46,8 @@ const ProductDetail = () => {
       </div>
       <section className="p-4 lg:p-8 ">
         <div className="container mx-auto space-y-12">
+
+          {/* product details description and photo is here */}
           <div className="flex flex-col overflow-hidden rounded-md shadow-sm lg:flex-row justify-around
           bg-gray-800 text-gray-100">
             <div>
@@ -45,7 +62,7 @@ const ProductDetail = () => {
             </div>
           </div>
 
-          {/* product making method is done here */}
+          {/* product making method and ingredient section  is here */}
           <div className='container mx-auto space-y-12 grid grid-cols-1 md:grid-cols-2 pt-10 mt-5'>
 
             <div className='text-center'>
@@ -70,8 +87,9 @@ const ProductDetail = () => {
             </div>
           </div>
 
+          {/* review adding section is here */}
           <div className='w-full'>
-            <Review handleReview={handleReview}></Review>
+            <Review handleReview={handleReview} productId={_id}></Review>
           </div>
 
         </div>

@@ -2,21 +2,30 @@ import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../Context/AuthProvider';
 import StarsRating from '../../Shared/StarsRating';
 
-const Review = ({handleReview}) => {
+const Review = ({ handleReview, productId }) => {
 
-  const {user}=useContext(AuthContext)
+  const { user } = useContext(AuthContext)
   const [starRating, setStarRating] = useState(0)
   const [review, setReview] = useState('')
 
-  const reviewData={
+  const reviewData = {
     'ratings': starRating,
     'image': user.photoURL,
     'reviewText': review,
-    'name' : user.displayName,
+    'email': user.email,
+    'name': user.displayName,
+    'productId': productId,
   }
-  
-  console.log(reviewData)
-  
+
+  const handleOnSubmit=(event)=>{
+    event.preventDefault()
+    const form = event.target;
+    form.reset()
+    setStarRating(0)
+  }
+
+  // console.log(reviewData)
+
   // console.log(review);
   return (
     <div>
@@ -26,10 +35,11 @@ const Review = ({handleReview}) => {
           <div className="flex flex-col items-center mt-2">
             <span className="text-center text-orange-500">Rate this recipe!</span>
           </div>
-          {/* star taking value is here */}
-          <div className='py-3'>
-            <StarsRating setStarRating={setStarRating}></StarsRating>
-          </div>
+        </div>
+
+        {/* star taking value is here */}
+        <form className='py-3' onSubmit={handleOnSubmit}>
+          <StarsRating setStarRating={setStarRating}></StarsRating>
           {/* review message area */}
           <div className="flex flex-col w-full my-4">
             <textarea
@@ -39,15 +49,15 @@ const Review = ({handleReview}) => {
               onChange={(event) => setReview(event.target.value)} >
             </textarea>
           </div>
-        </div>
-        <div className="flex items-center justify-center">
-          <button
-           type="button"
-            className="py-4 px-8 my-3 font-semibold rounded-md bg-[#579] text-[#E1D7C6] hover:bg-[#579BB6]"
-            onClick={()=>handleReview(reviewData)}>
+          <div className="flex items-center justify-center">
+            <button
+              type="submit"
+              className="py-4 px-8 my-3 font-semibold rounded-md bg-[#579] text-[#E1D7C6] hover:bg-[#579BB6]"
+              onClick={() => handleReview(reviewData)}>
               Leave feedback
             </button>
-        </div>
+          </div>
+        </form>
       </div>
     </div>
   );
