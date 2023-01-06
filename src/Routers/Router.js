@@ -11,43 +11,43 @@ import Registration from "../Login&Registration/Registration";
 
 const router = createBrowserRouter([
   {
-    path:'/',
-    element:<Main></Main>,
-    errorElement:<ErrorPage/>,
-    children:[
+    path: '/',
+    element: <Main></Main>,
+    errorElement: <ErrorPage />,
+    children: [
       {
-        path:'/',
-        element:<Home></Home>
+        path: '/',
+        element: <Home></Home>
       },
       {
-        path:'/home',
-        element:<Home></Home>
+        path: '/home',
+        element: <Home></Home>
       },
       {
-        path:'/login',
-        element:<Login></Login>
+        path: '/login',
+        element: <Login></Login>
       },
       {
-        path:'/register',
-        element:<Registration></Registration>
+        path: '/register',
+        element: <Registration></Registration>
       },
       {
-        path:'/products',
-        element:<AllProducts></AllProducts>,
-        loader:()=> fetch('http://localhost:5000/allProducts')
+        path: '/products',
+        element: <AllProducts></AllProducts>,
+        loader: () => fetch('https://cooking-jelly-server.vercel.app/allProducts')
       },
       {
-        path:'/singleProduct/:id',
-        element:<ProductDetail></ProductDetail>,
-        loader:({params})=> fetch(`http://localhost:5000/singleProduct/${params.id}`)
+        path: '/singleProduct/:id',
+        element: <ProductDetail></ProductDetail>,
+        loader: ({ params }) => fetch(`https://cooking-jelly-server.vercel.app/singleProduct/${params.id}`)
       },
       {
-        path:'/addrecipe',
-        element:<AddRecipe></AddRecipe>
+        path: '/addrecipe',
+        element: <AddRecipe></AddRecipe>
       },
       {
-        path:'/review',
-        element:<MyReview></MyReview>
+        path: '/review',
+        element: <MyReview></MyReview>
       },
     ]
   }

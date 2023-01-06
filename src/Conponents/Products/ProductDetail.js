@@ -2,25 +2,44 @@ import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 import Stars from '../../Shared/Stars';
 import CookingMethod from './CookingMethod';
+import Review from './Review';
 
 const ProductDetail = () => {
   const { data } = useLoaderData();
-  const { product_name, img, description, price, rating, ingredient, method, product_id } = data;
+  const { product_name, img, description, price, rating, ingredient, method} = data;
+
+  const handleReview= (reviewData)=>{
+
+    fetch('http://localhost:5000/review',{
+      method:'POST',
+      headers:{
+        "content-type":"application/json"
+      },
+      body:JSON.stringify(reviewData)
+    })
+    .then(res=>res.json())
+    .then(data=>console.log(data))
+    .catch(err=>{console.log(err)})
+
+  }
+
+
   return (
     <div className='mt-10'>
       <div className='text-2xl font-semibold text-orange-300 mb-5'>
         <h1>Today we will learn to make {product_name}.<strong>you Can order from us any time</strong></h1>
       </div>
-      <section className="p-4 lg:p-8 dark:bg-gray-800 dark:text-gray-100">
+      <section className="p-4 lg:p-8 ">
         <div className="container mx-auto space-y-12">
-          <div className="flex flex-col overflow-hidden rounded-md shadow-sm lg:flex-row justify-around">
+          <div className="flex flex-col overflow-hidden rounded-md shadow-sm lg:flex-row justify-around
+          bg-gray-800 text-gray-100">
             <div>
               <img src={img} alt="" className="h-80 w-full" />
             </div>
             <div className="flex flex-col justify-center flex-1 p-6 dark:bg-gray-900">
-              <span className="text-xs uppercase dark:text-gray-400">{product_name}</span>
+              <span className="text-xs uppercase text-gray-400">{product_name}</span>
               <h3 className="text-3xl font-bold">{product_name}</h3>
-              <p className="my-6 dark:text-gray-400">{description}</p>
+              <p className="my-6 text-gray-400">{description}</p>
               <Stars stars={rating} />
               <p className='text-lg text-orange-500 font-semibold mt-4'>price: ${price}</p>
             </div>
@@ -49,6 +68,10 @@ const ProductDetail = () => {
                   steps={steps}></CookingMethod>)
               }
             </div>
+          </div>
+
+          <div className='w-full'>
+            <Review handleReview={handleReview}></Review>
           </div>
 
         </div>

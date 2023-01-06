@@ -15,11 +15,11 @@ const handleLogOut=()=>{
 }
 
   return (
-    <div className="bg-[#579BB1]">
+    <div className="bg-[#579BB1] uppercase">
       <div className=" px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen md:px-24 lg:px-8">
         <div className="relative flex items-center justify-between lg:p-1">
-          <a
-            href="/"
+          <NavLink
+            to="/"
             aria-label="Company"
             title="Company"
             className=" sm:inline-flex items-center  mr-4 flex-none w-1/4"
@@ -28,11 +28,11 @@ const handleLogOut=()=>{
             <span className="ml-2 text-2xl font-bold tracking-wide text-gray-100 uppercase">
               Cooking<span className='text-orange-600'>Jelly</span>
             </span>
-          </a>
-          <ul className="flex items-center hidden space-x-8 lg:flex lg:grow lg:justify-center gap-8 text-2xl">
+          </NavLink>
+          <ul className="flex items-center hidden space-x-8 lg:flex lg:grow lg:justify-center gap-8 text-xl">
           <li>
               <NavLink
-                href="/"
+                to="/home"
                 aria-label="home"
                 title="home"
                 className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
@@ -52,7 +52,7 @@ const handleLogOut=()=>{
             </li>
             <li>
               <NavLink
-                href="/addrecipe"
+                to="/addrecipe"
                 aria-label="Add A Recipe"
                 title="Add A Recipe"
                 className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
@@ -62,16 +62,26 @@ const handleLogOut=()=>{
             </li>
             <li>
               <NavLink
-                href="/review"
-                aria-label="About us"
-                title="About us"
+                to="/review"
+                aria-label="My Review"
+                title="My Review"
                 className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
               >
                 My Review
               </NavLink>
             </li>
+            <li>
+              <NavLink
+                to="/aboutUs"
+                aria-label="About us"
+                title="About us"
+                className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+              >
+                About us
+              </NavLink>
+            </li>
           </ul>
-          <ul className="flex items-center hidden space-x-8 lg:flex none">
+          <ul className="flex items-center hidden space-x-8 lg:flex none text-lg">
             <li>
              {
               user && user.uid?
