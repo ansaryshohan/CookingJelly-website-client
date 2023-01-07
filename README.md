@@ -1,4 +1,4 @@
-Live site link:
+Live site link: https://cooking-jelly-web.web.app/home
 
 i Used tailwind css, express for server, and mongoDB as database.
 I have used React js as the javascript library.
