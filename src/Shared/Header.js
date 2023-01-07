@@ -1,12 +1,13 @@
 import React, { useContext, useState } from 'react';
 import { toast } from 'react-hot-toast';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthProvider';
 import logo from './moms-tiffinn-pan-cooking-logo-hd-png-download-removebg-preview.png'
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const{user,logOut}=useContext(AuthContext)
+  const{user,logOut}=useContext(AuthContext);
+  const [stickyNav, setStickyNav] = useState(false);
 
 const handleLogOut=()=>{
   logOut()
@@ -14,21 +15,31 @@ const handleLogOut=()=>{
   .catch(err=>{toast.error(err)})
 }
 
+const handleStickyNav = () => {
+  if (window.scrollY >= 200) {
+    setStickyNav(true);
+  } else {
+    setStickyNav(false);
+  }
+}
+window.addEventListener('scroll', handleStickyNav)
+
   return (
-    <div className="bg-[#579BB1] uppercase">
+    <div className=" uppercase">
+      <div className={stickyNav ? "sticky-nav" : "bg-[#579BB1]"}>
       <div className=" px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen md:px-24 lg:px-8">
         <div className="relative flex items-center justify-between lg:p-1">
-          <NavLink
+          <Link
             to="/"
             aria-label="Company"
             title="Company"
             className=" sm:inline-flex items-center  mr-4 flex-none w-1/4"
           >
-            <img src={logo} alt="" className='bg-[#579BB1] w-1/6 ' />
+            <img src={logo} alt="" className=' w-1/6 ' />
             <span className="ml-2 text-2xl font-bold tracking-wide text-gray-100 uppercase">
               Cooking<span className='text-orange-600'>Jelly</span>
             </span>
-          </NavLink>
+          </Link>
           <ul className="flex items-center hidden space-x-8 lg:flex lg:grow lg:justify-center gap-8 text-xl">
           <li>
               <NavLink
@@ -60,24 +71,26 @@ const handleLogOut=()=>{
                 Add a Recipe
               </NavLink>
             </li>
+           {
+            user &&  <li>
+            <NavLink
+              to="/review"
+              aria-label="My Review"
+              title="My Review"
+              className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+            >
+              My Review
+            </NavLink>
+          </li>
+           }
             <li>
               <NavLink
-                to="/review"
-                aria-label="My Review"
-                title="My Review"
+                to="/blog"
+                aria-label="Blog"
+                title="Blog"
                 className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
               >
-                My Review
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/aboutUs"
-                aria-label="About us"
-                title="About us"
-                className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
-              >
-                About us
+                Blog
               </NavLink>
             </li>
           </ul>
@@ -233,6 +246,7 @@ const handleLogOut=()=>{
             )}
           </div>
         </div>
+      </div>
       </div>
     </div>
   );

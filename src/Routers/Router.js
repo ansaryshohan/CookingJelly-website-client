@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import AddRecipe from "../Conponents/AddARecipe/AddRecipe";
+import Blog from "../Conponents/Blog/Blog";
 import Home from "../Conponents/Home/Home/Home";
 import MyReview from "../Conponents/MyReview/MyReview";
 import ReviewUpdate from "../Conponents/MyReview/ReviewUpdate";
@@ -52,8 +53,8 @@ const router = createBrowserRouter([
         element: <PrivaterRouter><MyReview></MyReview></PrivaterRouter>,
       },
       {
-        path: '/aboutus',
-        element:<></> ,
+        path: '/blog',
+        element:<Blog></Blog> ,
       },
       {
         path: '/reviewUpdate/:id',
