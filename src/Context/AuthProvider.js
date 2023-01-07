@@ -11,16 +11,20 @@ const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true)
 
   const createUser = (email, password) => {
+    setLoading(true)
     return createUserWithEmailAndPassword(auth, email, password)
   }
   const updateProfileInfo = (userName, photUrl) => {
+    setLoading(true)
     return updateProfile(auth.currentUser, { displayName: userName, photoURL: photUrl })
   }
   const login = (email, password) => {
+    setLoading(true)
     return signInWithEmailAndPassword(auth, email, password)
   }
 
   const googleSignUp = () => {
+    setLoading(true)
     return signInWithPopup(auth, GoogleProvider)
   }
 

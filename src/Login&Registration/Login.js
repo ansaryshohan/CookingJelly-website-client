@@ -53,7 +53,7 @@ const Login = () => {
   return (
     <div className='flex justify-center pt-20'>
       {/* title tag component */}
-      <HeadTitle to="Login"/>
+      <HeadTitle title="Login"/>
       
       <div className="w-full max-w-md p-8 space-y-3 rounded-xl bg-[#CCF2F4] text-black ">
         <h1 className="text-3xl font-bold text-center">Login</h1>

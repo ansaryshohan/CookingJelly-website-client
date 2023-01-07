@@ -8,14 +8,14 @@ const Footer = () => {
   return (
    
         <div className="px-4 pt-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 mt-40">
-          <div className="grid gap-16 row-gap-10 mb-8 lg:grid-cols-6">
-            <div className="md:max-w-md lg:col-span-2">
+          <div className="flex flex-col items-center lg:grid lg:gap-16 mb-8 lg:grid-cols-6">
+            <div className="flex flex-col items-center md:max-w-md lg:col-span-2 mb-8">
             <div className='flex items-center'>
             <Link
             to="/"
             aria-label="Company"
             title="Company"
-            className=" sm:inline-flex items-center  mr-4 flex-none w-1/4 "
+            className=" items-center mr-4 w-1/4  flex"
           >
             <img src={logo} alt="" className=' w-28 ' />
             <span className="ml-2 text-2xl font-bold tracking-wide text-[#579] uppercase">
@@ -49,7 +49,8 @@ const Footer = () => {
               </Link>
             </div>
             </div>
-            <div className="grid grid-cols-2 gap-5 row-gap-8 lg:col-span-4 md:grid-cols-4">
+
+            <div className="grid grid-cols-3 lg:gap-5 gap-10 row-gap-8 lg:col-span-4 md:grid-cols-4">
               <div>
                 <p className="font-semibold tracking-wide text-gray-800">
                   Category
@@ -181,7 +182,7 @@ const Footer = () => {
                   </li>
                 </ul>
               </div>
-              <div>
+              <div className='hidden lg:block'>
                 <p className="font-semibold tracking-wide text-gray-800">Cherry</p>
                 <ul className="mt-2 space-y-2">
                   <li>
@@ -220,6 +221,7 @@ const Footer = () => {
               </div>
             </div>
           </div>
+
           <div className="flex flex-col justify-between pt-5 pb-10 border-t sm:flex-row">
             
             

@@ -99,7 +99,7 @@ const Registration = () => {
   return (
     <div className="relative">
       {/* head title component */}
-      <HeadTitle to="Register"/>
+      <HeadTitle title="Register"/>
       <img
         src="https://i.ibb.co/nwcZGmQ/slider1.jpg"
         className="absolute inset-0 object-cover w-full h-full"
