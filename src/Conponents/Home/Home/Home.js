@@ -4,6 +4,7 @@ import CountDown from '../CountdownSection/CountDown';
 import ProductSection from '../ProductSection/ProductSection';
 import Slider from '../Slider/Slider';
 import Subscription from '../Subscription/Subscription';
+import Team from '../Subscription/Team';
 
 const Home = () => {
   return (
@@ -13,6 +14,7 @@ const Home = () => {
       <Slider></Slider>
       <ProductSection></ProductSection>
       <CountDown></CountDown>
+      <Team></Team>
       <Subscription></Subscription>
     </div>
   );
