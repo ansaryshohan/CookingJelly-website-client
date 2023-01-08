@@ -6,12 +6,12 @@ const SliderItems = ({ slider }) => {
   const { id, next, previous, title, paragraph, img } = slider
   return (
     <div id={`slide${id}`} className="carousel-item relative w-full h-[70vh] lg:h-3/4">
-      <div className='img-gradient h-full '>
+      <div className='img-gradient w-full h-full '>
         <img src={img} alt='' className="w-full lg:h-3/4 h-full " />
       </div>
 
       <div className="absolute flex justify-between transform -translate-y-1/2 
-        right-0 bottom-0 lg:right-10 lg:bottom-10  md:right-10 md:bottom-10">
+        right-0 bottom-0 lg:right-10 lg:bottom-16  md:right-10 md:bottom-10">
         <a href={`#slide${previous}`} className="btn btn-circle mr-4 md:mr-6 lg:mr-9">
           <FaArrowLeft className='text-[#579BB1] lg:text-xl md:text-xl text-base' />
         </a>

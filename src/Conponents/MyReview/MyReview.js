@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Context/AuthProvider';
 import HeadTitle from '../../Shared/HeadTitle';
+import Profile from './Profile';
 import SingleReviewCard from './SingleReviewCard';
 
 const MyReview = () => {
@@ -27,7 +28,7 @@ const[myReviews,setMyReviews]=useState([])
       }})
     }
     const remaining= myReviews.filter(reviews=>reviews._id !== id);
-    console.log(remaining)
+    // console.log(remaining)
     setMyReviews(remaining)
   }
   
@@ -35,12 +36,16 @@ const[myReviews,setMyReviews]=useState([])
   return (
     <div  className='container mx-auto'>
       <HeadTitle title="myReviews"></HeadTitle>
-      <div className='grid sm:grid-cols-1 md:grid-cols-2 gap-5'>
+
+      <Profile></Profile>
+
+      <div className='grid sm:grid-cols-1 md:grid-cols-2 gap-5 mt-20'>
       {
-        myReviews?.map(singleReview=><SingleReviewCard
+        myReviews.length? myReviews?.map(singleReview=><SingleReviewCard
         key={singleReview._id}
         singleReview={singleReview}
-        handleReviewDelete={handleReviewDelete}></SingleReviewCard>)
+        handleReviewDelete={handleReviewDelete}></SingleReviewCard>):
+        <p className='text-4xl font-bold text-red-500 text-center'>You Have Zero Reviews</p>
       }
       </div>
 

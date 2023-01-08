@@ -41,7 +41,7 @@ const ProductDetail = () => {
       .then(data => { setReviewsFromDB(data.data) })
   }, [_id])
 
-  console.log(reviewsFromDB)
+  // console.log(reviewsFromDB)
   return (
     <div className='mt-10'>
       <div className='text-2xl font-semibold text-orange-300 mb-5'>

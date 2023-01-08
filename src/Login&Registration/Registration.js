@@ -76,7 +76,7 @@ const Registration = () => {
     createUser(userInfo.email, userInfo.password)
       .then((result) => {
         const user = result.user;
-        console.log('from create user', user);
+        // console.log('from create user', user);
 
         if (user.uid) {
           // updateing profile name and photourl
