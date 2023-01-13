@@ -45,7 +45,7 @@ const AddRecipe = () => {
             ingredient,
             method,
           }
-          fetch('http://localhost:5000/addedTopProducts', {
+          fetch('https://cooking-jelly-server.vercel.app/addedTopProducts', {
             method: "POST",
             headers: {
               "content-type": "application/json"
