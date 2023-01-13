@@ -13,7 +13,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgba(248, 244, 234, 0.8);
+  background-color: #f8f4eacc;
 }
 
 code {
