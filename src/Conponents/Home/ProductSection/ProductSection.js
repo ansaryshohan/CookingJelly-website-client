@@ -14,7 +14,7 @@ const ProductSection = () => {
 
   // console.log(products)
   return (
-    <div className='w-9/12 mx-auto text-center pt-28 pb-20'>
+    <div className='w-11/12 mx-auto text-center pt-28 pb-20'>
 
       <div className='flex flex-col gap-2 mb-14'>
         <h1 className='text-xl text-[#579BB1] font-bold '>Our top Items</h1>
@@ -33,9 +33,9 @@ const ProductSection = () => {
       </div>
 
       <div className="flex items-center justify-center w-full mt-16">
-        <Link to='/products'>
+        {/* <Link to='/products'>
           <button type="button" className="border px-10 py-4 text-2xl font-medium rounded-xl bg-[#579BB1] text-[#E1D7C6] hover:bg-[#E1D7C6] hover:text-[#579BB1] hover:border-[#579BB1] hover:font-semibold ease-in transition">See all Products</button>
-        </Link>
+        </Link> */}
       </div>
     </div>
   );

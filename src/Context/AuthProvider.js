@@ -1,48 +1,61 @@
-import React, { createContext, useEffect, useState } from 'react';
-import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth'
-import app from '../Firebase/Firebase.config';
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  GoogleAuthProvider,
+  onAuthStateChanged,
+  sendPasswordResetEmail,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  signOut,
+  updateProfile,
+} from "firebase/auth";
+import React, { createContext, useEffect, useState } from "react";
+import app from "../Firebase/Firebase.config";
 
-const auth = getAuth(app)
-export const AuthContext = createContext()
+const auth = getAuth(app);
+export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-  const GoogleProvider = new GoogleAuthProvider(auth)
-  const [user, setUser] = useState(null)
-  const [loading, setLoading] = useState(true)
+  const GoogleProvider = new GoogleAuthProvider(auth);
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const createUser = (email, password) => {
-    setLoading(true)
-    return createUserWithEmailAndPassword(auth, email, password)
-  }
+    setLoading(true);
+    return createUserWithEmailAndPassword(auth, email, password);
+  };
   const updateProfileInfo = (userName, photUrl) => {
-    setLoading(true)
-    return updateProfile(auth.currentUser, { displayName: userName, photoURL: photUrl })
-  }
+    setLoading(true);
+    return updateProfile(auth.currentUser, {
+      displayName: userName,
+      photoURL: photUrl,
+    });
+  };
   const login = (email, password) => {
-    setLoading(true)
-    return signInWithEmailAndPassword(auth, email, password)
-  }
+    setLoading(true);
+    return signInWithEmailAndPassword(auth, email, password);
+  };
 
   const googleSignUp = () => {
-    setLoading(true)
-    return signInWithPopup(auth, GoogleProvider)
-  }
+    setLoading(true);
+    return signInWithPopup(auth, GoogleProvider);
+  };
 
   const forgetPassword = (email) => {
-    return sendPasswordResetEmail(auth, email)
-  }
+    return sendPasswordResetEmail(auth, email);
+  };
 
   const logOut = () => {
-    return signOut(auth)
-  }
+    return signOut(auth);
+  };
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, currentUser => {
-      setUser(currentUser)
-      setLoading(false)
-    })
-    return () => unsubscribe()
-  }, [])
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      setLoading(false);
+    });
+    return () => unsubscribe();
+  }, []);
 
   const authInfo = {
     user,
@@ -52,12 +65,10 @@ const AuthProvider = ({ children }) => {
     login,
     googleSignUp,
     forgetPassword,
-    logOut
-  }
+    logOut,
+  };
   return (
-    <AuthContext.Provider value={authInfo}>
-      {children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
   );
 };
 

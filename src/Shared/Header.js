@@ -11,12 +11,12 @@ const Header = () => {
 
   const handleLogOut = () => {
     logOut()
-      .then(() => { toast.success('logOut succesfull') })
+      .then(() => { toast.success('logOut successful') })
       .catch(err => { toast.error(err) })
   }
 
   const handleStickyNav = () => {
-    if (window.scrollY >= 200) {
+    if (window.scrollY >= 150) {
       setStickyNav(true);
     } else {
       setStickyNav(false);
@@ -25,7 +25,7 @@ const Header = () => {
   window.addEventListener('scroll', handleStickyNav)
 
   return (
-    <div className=" uppercase">
+    <div className="uppercase">
       <div className={stickyNav ? "sticky-nav" : "bg-[#579BB1]"}>
         <div className=" px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen md:px-24 lg:px-8">
           <div className="relative flex items-center justify-between lg:p-1">
@@ -40,7 +40,7 @@ const Header = () => {
                 Cooking<span className='text-orange-600'>Jelly</span>
               </span>
             </Link>
-            <ul className="flex items-center hidden space-x-8 lg:flex lg:grow lg:justify-center gap-8 text-xl">
+            <ul className=" items-center hidden space-x-8 lg:flex lg:grow lg:justify-center gap-8 text-xl">
               <li>
                 <NavLink
                   to="/home"
@@ -94,7 +94,7 @@ const Header = () => {
                 </NavLink>
               </li>
             </ul>
-            <ul className="flex items-center hidden space-x-8 lg:flex none text-lg">
+            <ul className="items-center hidden space-x-8 lg:flex none text-lg">
               <li>
                 {
                   user && user.uid ?
