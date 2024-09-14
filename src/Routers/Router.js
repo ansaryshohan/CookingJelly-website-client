@@ -36,8 +36,8 @@ const router = createBrowserRouter([
       },
       {
         path: '/products',
-        element: <AllProducts></AllProducts>,
-        loader: () => fetch('https://cooking-jelly-server.vercel.app/allProducts')
+        element: <AllProducts/>,
+        loader: async() => await fetch('https://cooking-jelly-server.vercel.app/allProducts')
       },
       {
         path: '/singleProduct/:id',
