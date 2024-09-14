@@ -5,17 +5,23 @@ import ProductSection from '../ProductSection/ProductSection';
 import Subscription from '../Subscription/Subscription';
 import Team from '../Subscription/Team';
 import SliderItems from '../Slider/SliderItems';
+import ShareRecipeSection from '../shareRecipe/ShareRecipeSection';
+import BlogSection from '../blog/BlogSection';
+import CategorySection from '../categories/CategorySection';
 
 const Home = () => {
   return (
     <div>
-      <HeadTitle title="Home"></HeadTitle>
+      <HeadTitle title="Home"/>
 
       <SliderItems/>
-      <ProductSection></ProductSection>
-      <CountDown></CountDown>
-      <Team></Team>
-      <Subscription></Subscription>
+      <ProductSection/>
+      <ShareRecipeSection/>
+      <CategorySection/>
+      <CountDown/>
+      <BlogSection/>
+      <Team/>
+      <Subscription/>
     </div>
   );
 };

@@ -10,7 +10,7 @@ const SingleProductCard = ({ singleProduct }) => {
 
   return (
     <PhotoProvider>
-    <div className="max-w-md rounded-md shadow-xl bg-[#F9F9F9]">
+    <div className="max-w-md rounded-md shadow-xl bg-[#F9F9F9] mx-auto">
       <PhotoView src={img}>
       <img src={img} alt="" className="object-cover object-center w-full rounded-t-md dark:bg-gray-500" />
       </PhotoView>

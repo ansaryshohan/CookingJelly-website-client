@@ -37,7 +37,7 @@ const Header = () => {
             >
               <img src={logo} alt="" className=' w-1/6 ' />
               <span className="ml-2 text-2xl font-bold tracking-wide text-gray-100 uppercase">
-                Cooking<span className='text-orange-600'>Jelly</span>
+                Cooking<span className='text-orange-700'>Jelly</span>
               </span>
             </Link>
             <ul className=" items-center hidden space-x-8 lg:flex lg:grow lg:justify-center gap-8 text-xl">
