@@ -11,6 +11,10 @@ module.exports = {
         primaryColor: "#000000",
         secondaryColor: "#579BB1",
       },
+      colors:{
+        whiteColor: "#000000",
+        greenColor: "#579BB1",
+      }
     },
   },
   plugins: [require("daisyui")],
